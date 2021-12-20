@@ -39,16 +39,16 @@ public class VentanaPrincipalController implements Initializable {
     @FXML
     private ImageView btn_audio;
     
-    private Sound bgsound = new Sound();
+    //private Sound bgsound = new Sound();
     
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        if(bgsound != null){
-            bgsound.playBGMusic();
-        }
+        //if(bgsound != null){
+        //    bgsound.playBGMusic();
+        //}
     }
 
     @FXML
@@ -93,13 +93,13 @@ public class VentanaPrincipalController implements Initializable {
     @FXML
     private void audioChange(MouseEvent event) {
         
-        if(!bgsound.isPlaying()){
-            btn_audio.setImage(new Image("ec\\edu\\espol\\img\\volume.png"));
-            bgsound.muteBGMusic();
-        } else {
-            btn_audio.setImage(new Image("ec\\edu\\espol\\img\\mute.png")); 
-            bgsound.desmuteBGMusic();
-        }
+        //if(!bgsound.isPlaying()){
+        //    btn_audio.setImage(new Image("ec\\edu\\espol\\img\\volume.png"));
+        //    bgsound.muteBGMusic();
+        //} else {
+        //    btn_audio.setImage(new Image("ec\\edu\\espol\\img\\mute.png")); 
+        //    bgsound.desmuteBGMusic();
+        //}
         
     }
 

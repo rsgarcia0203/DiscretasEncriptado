@@ -16,6 +16,8 @@ import javafx.scene.image.Image;
 public class App extends Application {
 
     private static Scene scene;
+    private Sound bgsound = new Sound();
+
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -25,6 +27,7 @@ public class App extends Application {
         stage.setTitle("CRYPTOGAME");
         stage.setResizable(false);
         stage.getIcons().add(new Image("ec/edu/espol/img/icon.png"));
+        bgsound.playBGMusic();
     }
     
     static void setRoot(String fxml) throws IOException {
