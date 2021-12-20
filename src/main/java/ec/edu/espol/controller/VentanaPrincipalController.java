@@ -21,6 +21,7 @@ import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.MediaPlayer;
 
 /**
  * FXML Controller class
@@ -37,13 +38,17 @@ public class VentanaPrincipalController implements Initializable {
     private Button btn_exit;
     @FXML
     private ImageView btn_audio;
-
+    
+    private Sound bgsound = new Sound();
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        if(bgsound != null){
+            bgsound.playBGMusic();
+        }
     }
 
     @FXML
@@ -54,6 +59,7 @@ public class VentanaPrincipalController implements Initializable {
             try {
                 FXMLLoader fxmlloader = App.loadFXMLoader("VentanaJuego");
                 App.setRoot(fxmlloader);
+                Sound.goButton();
             } catch (IOException ex) {
                 Alert a = new Alert(Alert.AlertType.ERROR, "Error al cargar la ventana.");
                 a.show();
@@ -63,14 +69,16 @@ public class VentanaPrincipalController implements Initializable {
             try {
                 FXMLLoader fxmlloader = App.loadFXMLoader("VentanaPuntuacion");
                 App.setRoot(fxmlloader);
+                Sound.click();
             } catch (IOException ex) {
                 Alert a = new Alert(Alert.AlertType.ERROR, "Error al cargar la ventana.");
                 a.show();
             }
         } else if (btn_exit.isPressed()) {
             btn_exit.setEffect(new InnerShadow());
+            Sound.click();
         }
-        //Sound.click1();
+        
     }
 
     @FXML
@@ -85,13 +93,12 @@ public class VentanaPrincipalController implements Initializable {
     @FXML
     private void audioChange(MouseEvent event) {
         
-        //Sound.stopBGMusic();
-        if(btn_audio.getImage().getUrl().equals((new Image("ec\\edu\\espol\\img\\mute.png")).getUrl())){
+        if(!bgsound.isPlaying()){
             btn_audio.setImage(new Image("ec\\edu\\espol\\img\\volume.png"));
-        } 
-        
-        if (btn_audio.getImage().getUrl().equals((new Image("ec\\edu\\espol\\img\\volume.png")).getUrl())){
-            btn_audio.setImage(new Image("ec\\edu\\espol\\img\\mute.png"));            
+            bgsound.muteBGMusic();
+        } else {
+            btn_audio.setImage(new Image("ec\\edu\\espol\\img\\mute.png")); 
+            bgsound.desmuteBGMusic();
         }
         
     }

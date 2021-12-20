@@ -6,6 +6,7 @@
 package ec.edu.espol.controller;
 
 import ec.edu.espol.encriptadodiscretas.App;
+import ec.edu.espol.model.Sound;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -49,6 +50,7 @@ public class VentanaPuntuacionController implements Initializable {
         try {
             FXMLLoader fxmlloader = App.loadFXMLoader("VentanaPrincipal");
             App.setRoot(fxmlloader);
+            Sound.clickBack();
         } catch (IOException ex) {
             Alert a = new Alert(Alert.AlertType.ERROR, "Error al cargar la ventana.");
             a.show();

@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import javafx.scene.image.Image;
-import javafx.scene.text.Font;
 
 /**
  * JavaFX App
@@ -26,13 +25,12 @@ public class App extends Application {
         stage.setTitle("CRYPTOGAME");
         stage.setResizable(false);
         stage.getIcons().add(new Image("ec/edu/espol/img/icon.png"));
-        //Sound.playBGMusic();
     }
     
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
-
+     
     public static void setRoot(FXMLLoader fxmlloader) throws IOException {
         scene.setRoot(fxmlloader.load());
     }

@@ -3,6 +3,61 @@
     Author     : rsgar
 */
 
-.mainFxmlClass {
-
+.root {
+    -fx-background-image: url(file:resources/images/BGimage2.jpg);
+    -fx-background-size: 100% 100%;
+    -fx-background-color:transparent;
+    -fx-font-size:30;
 }
+
+.pane{
+    -fx-background-color:linear-gradient(#151928,#2196f3);
+    -fx-opacity: 0.5;
+    -fx-font-size:30;
+}
+
+.button{
+    /*-fx-background-color:linear-gradient(#dc9656,#ab4642);*/
+    -fx-background-color:#2196f3;
+    -fx-text-fill:#dcdcdc;
+    -fx-background-radius: 6em;
+}
+
+.button .text {
+    -fx-font-family: "BungeeShade";
+    -fx-font-size: 26;
+}
+
+.button:hover{
+    -fx-background-color:#5db6ff;
+}
+
+.button:pressed{
+    -fx-background-color:#104f7c;
+}
+
+.tf_box{
+    -fx-background-color:transparent;
+    -fx-border-color:#ffffff;
+    -fx-border-width: 0px 0px 1px 0px;
+    -fx-text-fill: #ffffff;
+}
+
+.tf{
+    -fx-background-color:transparent;
+}
+
+.btnAudio{
+    -fx-background-color:transparent;
+    -fx-text-fill:#dcdcdc;
+    -fx-background-radius: 6em;
+}
+
+.btnAudio:hover{
+    -fx-background-color:transparent;
+}
+
+.btnAudio:pressed{
+    -fx-background-color:transparent;
+}
+
