@@ -12,8 +12,40 @@
 
 .pane{
     -fx-background-color:linear-gradient(#151928,#2196f3);
-    -fx-opacity: 0.5;
+    -fx-opacity: 0.7;
     -fx-font-size:30;
+}
+
+.pane .label{
+    -fx-opacity: 1;
+}
+
+.pane .img {
+    -fx-opacity: 1;
+}
+
+.cont{
+    -fx-background-color:transparent;
+    -fx-opacity: 1;
+    -fx-font-size:30;
+}
+
+.gridpane {
+    -fx-border-color: black; 
+    -fx-border-style: solid; 
+    -fx-border-width: 1px;
+}
+
+.wordPane {
+    -fx-background-color:transparent;
+}
+
+.wordPane:hover {
+    -fx-background-color: #BFE1FF;
+}
+
+.wordPane:pressed {
+    -fx-background-color:#5db6ff;
 }
 
 .button{
@@ -36,28 +68,8 @@
     -fx-background-color:#104f7c;
 }
 
-.tf_box{
-    -fx-background-color:transparent;
-    -fx-border-color:#ffffff;
-    -fx-border-width: 0px 0px 1px 0px;
-    -fx-text-fill: #ffffff;
+.label{
+   -fx-font-size: 30;
+   -fx-text-fill: #ffffff;
+   -fx-font-weight: bold;
 }
-
-.tf{
-    -fx-background-color:transparent;
-}
-
-.btnAudio{
-    -fx-background-color:transparent;
-    -fx-text-fill:#dcdcdc;
-    -fx-background-radius: 6em;
-}
-
-.btnAudio:hover{
-    -fx-background-color:transparent;
-}
-
-.btnAudio:pressed{
-    -fx-background-color:transparent;
-}
-

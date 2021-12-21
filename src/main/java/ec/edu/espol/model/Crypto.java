@@ -9,7 +9,6 @@ import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
 import java.util.Arrays;
 import java.util.Base64;
 import java.util.Base64.Encoder;
@@ -26,12 +25,13 @@ import javax.crypto.spec.SecretKeySpec;
  */
 public class Crypto {
     
-    private String key;
+    private final String key;
     private String word;
     private String encryptWord;
     private String decryptWord;
 
     public Crypto() {
+        this.key = "SomosProgramadores";
     }
 
     public Crypto(String key) {
@@ -77,10 +77,6 @@ public class Crypto {
     public String getKey() {
         return key;
     }
-
-    public void setKey(String key) {
-        this.key = key;
-    }
     
     // Método para crear la clave de encriptado / desencriptado
     public SecretKeySpec createKeyCode(String key){
@@ -98,7 +94,7 @@ public class Crypto {
         
     }
     
-    //Método para encriptar
+    //Método de encriptado
     public String encrypt(String encrypt){
         
         try{
@@ -117,6 +113,7 @@ public class Crypto {
         
     }
     
+    //Método de descencriptado
     public String decrypt(String decrypt){
         
         try{
