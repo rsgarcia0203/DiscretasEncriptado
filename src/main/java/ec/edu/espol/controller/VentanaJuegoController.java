@@ -8,15 +8,19 @@ package ec.edu.espol.controller;
 import ec.edu.espol.encriptadodiscretas.App;
 import ec.edu.espol.model.Crypto;
 import ec.edu.espol.model.Jugador;
-import ec.edu.espol.model.Partida;
+import ec.edu.espol.model.PartidaCrypto;
 import ec.edu.espol.model.Sound;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -25,7 +29,10 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.util.Duration;
 
 /**
  * FXML Controller class
@@ -50,55 +57,18 @@ public class VentanaJuegoController implements Initializable {
     private Button btn_send;
     @FXML
     private Label encryptWord;
-    @FXML
-    private Label w1;
-    @FXML
-    private Label w2;
-    @FXML
-    private Label w3;
-    @FXML
-    private Label w4;
-    @FXML
-    private Label w5;
-    @FXML
-    private Label w6;
-    @FXML
-    private Label w7;
-    @FXML
-    private Label w8;
-    @FXML
-    private Label w9;
 
     private String selectedWord;
-    private Jugador player;
+    private GridPane gridpane;
     @FXML
-    private Pane pane1;
-    @FXML
-    private Pane pane2;
-    @FXML
-    private Pane pane3;
-    @FXML
-    private Pane pane4;
-    @FXML
-    private Pane pane6;
-    @FXML
-    private Pane pane7;
-    @FXML
-    private Pane pane8;
-    @FXML
-    private Pane pane9;
-    @FXML
-    private Pane pane5;
-    Crypto crypto = new Crypto();
+    private Pane paneCentral;
 
     /**
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        Partida.nuevaPartida();
-        encryptWord.setText(crypto.encrypt("hola"));
-        player = new Jugador();
+    public void initialize(URL url, ResourceBundle rb) {  
+        encryptWord.setText(PartidaCrypto.crypto.encrypt("hola"));
     }
 
     @FXML
@@ -148,36 +118,20 @@ public class VentanaJuegoController implements Initializable {
     }
 
     @FXML
-    private void send(MouseEvent event) {
-        compare();
-
-        paneDiselect(pane1);
-        paneDiselect(pane2);
-        paneDiselect(pane3);
-        paneDiselect(pane4);
-        paneDiselect(pane5);
-        paneDiselect(pane6);
-        paneDiselect(pane7);
-        paneDiselect(pane8);
-        paneDiselect(pane9);
-
-    }
-
-    @FXML
     private void sendPressed(MouseEvent event) {
         btn_send.setEffect(new InnerShadow());
     }
 
     private void mistake() {
 
-        player.mistake();
         Sound.mistake();
+        PartidaCrypto.mistake();
 
-        if (player.getIntentos() == 2) {
+        if (PartidaCrypto.intentos == 2) {
             a3.setVisible(false);
-        } else if (player.getIntentos() == 1) {
+        } else if (PartidaCrypto.intentos == 1) {
             a2.setVisible(false);
-        } else if (player.getIntentos() == 0) {
+        } else if (PartidaCrypto.intentos == 0) {
             a1.setVisible(false);
 
             try {
@@ -194,64 +148,101 @@ public class VentanaJuegoController implements Initializable {
 
     private void success() {
 
-        player.acert();
+        PartidaCrypto.acert();
         Sound.success();
 
     }
 
-    private void paneSelected(Pane pane) {
-        pane.setStyle(pane.getStyle() + "-fx-border-color: black; -fx-border-style: solid; -fx-border-width: 1px; -fx-background-color:#5db6ff");
-    }
-
-    private void paneDiselect(Pane pane) {
-        pane.setStyle("-fx-border-color: black; -fx-border-style: solid; -fx-border-width: 1px; -fx-background-color:transparent");
-    }
-
     private void compare() {
 
-        if ((crypto.encrypt(selectedWord)).equals(encryptWord.getText())) {
+        if ((PartidaCrypto.crypto.encrypt(selectedWord)).equals(encryptWord.getText())) {
             success();
-            points.setText(String.valueOf(player.getPoints()));
-            words.setText(String.valueOf(player.getPalabrasEncontradas()));
+            points.setText(String.valueOf(PartidaCrypto.puntos));
+            words.setText(String.valueOf(PartidaCrypto.palabrasAcertadas));
 
         } else {
             mistake();
-            points.setText(String.valueOf(player.getPoints()));
-            words.setText(String.valueOf(player.getPalabrasEncontradas()));
+            points.setText(String.valueOf(PartidaCrypto.puntos));
+            words.setText(String.valueOf(PartidaCrypto.palabrasAcertadas));
         }
+
+    }
+
+    public void generarPalabras() {
+
+        // Creo el GridPane que contendrá mis palabras desencriptadas
+        this.gridpane = new GridPane();
+
+        double width = 795 / 3;
+        double height = 271 / 3;
+
+        //Recorro mi sopa por fila y columna, uso for porque es esencial guardar las coordenadas (x,y) para el gridpana
+        for (int y = 0; y < 3; y++) {
+
+            // creación casillas con palabras
+            for (int x = 0; x < 3; x++) {
+
+                int i = (int) (Math.random() * PartidaCrypto.palabras.size());
+                String palabra = PartidaCrypto.palabras.get(i); //Obtengo mi elemento por columna
+
+                StackPane pane = crearCasilla(width, height, palabra);
+
+                gridpane.add(pane, x, y); //Agrego al gridpane el contener en la posicion X,Y
+
+            }
+        }
+        
+        paneCentral.getChildren().add(gridpane);
+    }
+
+    private StackPane crearCasilla(double width, double height, String palabra) {
+
+        StackPane pane = new StackPane();
+        pane.setPrefSize(width, height);
+        pane.setStyle("-fx-border-color: black; -fx-border-style: solid; -fx-border-width: 0px;");
+        pane.setCursor(Cursor.HAND);
+
+        Label contPalabra = new Label(palabra); //Lo contengo en un label para mostrar
+        contPalabra.setMouseTransparent(true);
+
+        Pane fondo = new Pane();
+
+        pane.getChildren().add(fondo);
+        pane.getChildren().add(contPalabra);
+        StackPane.setAlignment(contPalabra, Pos.CENTER);
+
+        pane.setOnMouseClicked(t -> seleccionarPalabra(fondo, palabra));
+
+        pane.setOnMouseEntered(e -> mouseEnteredPane(pane));
+        pane.setOnMouseExited(e -> mouseExitedPane(pane));
+        pane.setOnMousePressed(e -> mouseExitedPane(pane));
+        pane.setOnMouseReleased(e -> mouseEnteredPane(pane));
+
+        return pane;
+
+    }
+
+    private void mouseEnteredPane(StackPane p) {
+        p.setStyle(p.getStyle() + " -fx-background-color:#5db6ff");
+    }
+
+    private void mouseExitedPane(StackPane p) {
+        p.setStyle("-fx-border-color: black; -fx-border-style: solid; -fx-border-width: 0px;");
+    }
+
+    public void seleccionarPalabra(Pane fondo, String palabra) {
+        Sound.click();
+        
+        for (Node node: this.gridpane.getChildren()){
+            node.setStyle("-fx-border-color: black; -fx-border-style: solid; -fx-border-width: 0px;");
+        }
+        
+        fondo.setStyle("-fx-background-color:#5db6ff");
+        this.selectedWord = palabra;        
 
     }
 
     @FXML
-    private void paneSelect(MouseEvent event) {
-        
-        if (pane1.isPressed()) {
-            selectedWord = w1.getText();
-            paneSelected(pane1);
-        } else if (pane2.isPressed()) {
-            selectedWord = w2.getText();
-            paneSelected(pane2);
-        } else if (pane3.isPressed()) {
-            selectedWord = w3.getText();
-            paneSelected(pane3);
-        } else if (pane4.isPressed()) {
-            selectedWord = w4.getText();
-            paneSelected(pane4);
-        } else if (pane5.isPressed()) {
-            selectedWord = w5.getText();
-            paneSelected(pane5);
-        } else if (pane6.isPressed()) {
-            selectedWord = w6.getText();
-            paneSelected(pane6);
-        } else if (pane7.isPressed()) {
-            selectedWord = w7.getText();
-            paneSelected(pane7);
-        } else if (pane8.isPressed()) {
-            selectedWord = w8.getText();
-            paneSelected(pane8);
-        } else if (pane9.isPressed()) {
-            selectedWord = w9.getText();
-            paneSelected(pane9);
-        }
+    private void send(MouseEvent event) {
     }
 }

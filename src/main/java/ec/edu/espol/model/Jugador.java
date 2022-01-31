@@ -13,22 +13,16 @@ import java.util.ArrayList;
  */
 public class Jugador {
     private String Name;
-    private int points;
     private int intentos;
-    private final ArrayList<String> palabras_encontradas;
     
-    public Jugador(String Name, ArrayList<String> palabras_encontradas) {
+    public Jugador(String Name) {
         this.Name = Name;
-        this.points = 0;
         this.intentos = 3;
-        this.palabras_encontradas = palabras_encontradas;
     }
     
     public Jugador() {
         this.Name = null;
-        this.points = 0;
         this.intentos = 3;
-        this.palabras_encontradas = new ArrayList<>();
     }
     
     public String getName() {
@@ -39,14 +33,6 @@ public class Jugador {
         this.Name = Name;
     }
 
-    public int getPoints() {
-        return points;
-    }
-
-    public void setPoints(int points) {
-        this.points = points;
-    }
-
     public int getIntentos() {
         return intentos;
     }
@@ -54,21 +40,5 @@ public class Jugador {
     public void setIntentos(int intentos) {
         this.intentos = intentos;
     }
-    
-    public int getPalabrasEncontradas(){
-        return this.palabras_encontradas.size();
-    }   
-    
-    public void addPalabra(String word){
-        this.palabras_encontradas.add(word);
-    }
-    
-    public void mistake(){
-        this.intentos--;
-        this.points -= 3;
-    }
-    
-    public void acert(){
-        this.points += 3;
-    }
+        
 }

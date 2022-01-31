@@ -41,11 +41,11 @@
 }
 
 .wordPane:hover {
-    -fx-background-color: #BFE1FF;
+    -fx-background-color:#5db6ff;
 }
 
 .wordPane:pressed {
-    -fx-background-color:#5db6ff;
+    -fx-background-color: #BFE1FF;
 }
 
 .button{

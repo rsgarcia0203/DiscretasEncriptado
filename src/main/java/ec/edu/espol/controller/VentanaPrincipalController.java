@@ -6,6 +6,7 @@
 package ec.edu.espol.controller;
 
 import ec.edu.espol.encriptadodiscretas.App;
+import ec.edu.espol.model.PartidaCrypto;
 import ec.edu.espol.model.Sound;
 import java.io.IOException;
 import java.net.URL;
@@ -18,10 +19,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.InnerShadow;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.media.MediaPlayer;
 
 /**
  * FXML Controller class
@@ -46,9 +45,7 @@ public class VentanaPrincipalController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //if(bgsound != null){
-        //    bgsound.playBGMusic();
-        //}
+        
     }
 
     @FXML
@@ -56,6 +53,7 @@ public class VentanaPrincipalController implements Initializable {
 
         if (btn_newGame.isPressed()) {
             btn_newGame.setEffect(new InnerShadow());
+            PartidaCrypto.nuevaPartida();
             try {
                 FXMLLoader fxmlloader = App.loadFXMLoader("VentanaJuego");
                 App.setRoot(fxmlloader);
@@ -63,6 +61,7 @@ public class VentanaPrincipalController implements Initializable {
             } catch (IOException ex) {
                 Alert a = new Alert(Alert.AlertType.ERROR, "Error al cargar la ventana.");
                 a.show();
+                ex.printStackTrace();
             }
         } else if (btn_points.isPressed()) {
             btn_points.setEffect(new InnerShadow());

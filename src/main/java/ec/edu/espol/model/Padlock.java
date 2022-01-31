@@ -15,22 +15,28 @@ public class Padlock {
 
     private int[] key;
     private ArrayList<int[]> possiblesKeys;
-
+    private int intentos;
+    
+    // Contructores
     public Padlock() {
         this.key = generateKey(3);
-        this.possiblesKeys = new ArrayList<>();
+        this.possiblesKeys = generatePossiblesKeys();
+        this.intentos = 3;
     }
 
     public Padlock(int[] key) {
         this.key = key;
-        this.possiblesKeys = new ArrayList<>();
+        this.possiblesKeys = generatePossiblesKeys();
+        this.intentos = 3;
     }
 
     public Padlock(int[] key, ArrayList<int[]> possiblesKeys) {
         this.key = key;
         this.possiblesKeys = possiblesKeys;
+        this.intentos = 3;
     }
-
+    
+    // Getters y Setters
     public int[] getKey() {
         return key;
     }
@@ -47,8 +53,16 @@ public class Padlock {
         this.possiblesKeys = possiblesKeys;
     }
 
-    // El método recibirá un entero que inticará cuantos dígitos tendrá nuestra clave
-    private int[] generateKey(int n) {
+    public int getIntentos() {
+        return intentos;
+    }
+
+    public void setIntentos(int intentos) {
+        this.intentos = intentos;
+    }
+        
+    // El método generará la clave del padlock con una cantidad de n dígitos para la clave
+    private int[] generateKey(int n) throws MaxDigitsException {
         if (n >= 3 && n <= 5) {
             int[] k = new int[n];
             for (int i = 0; i < this.key.length; i++) {
@@ -61,8 +75,8 @@ public class Padlock {
         }
     }
 
-    // El método recibirá un entero que inticará cuantas posibles claves tendremos en nuestra lista
-    private ArrayList<int[]> generatePossiblesKeys() {
+    // El método generará las posibles claves para abrir el padlock
+    private ArrayList<int[]> generatePossiblesKeys() throws MaxPosiblesKeysException{
         int n = this.key.length + 2;
 
         if (n > 3 && n < 8) {
@@ -98,7 +112,7 @@ public class Padlock {
         }
     }
     
-    
+    // Devuelve un índice aleatorio totalmente diferente al indice dado
     private int getDifferentIndex(int oldIndex) {
         int newIndex = (int) (Math.random() * this.key.length);
 

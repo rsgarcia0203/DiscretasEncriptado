@@ -14,37 +14,25 @@ import java.util.ArrayList;
  *
  * @author rsgar
  */
-public abstract class Partida {
+public abstract class PartidaCrypto {
     
-    public static Jugador jugador;
-    public static Crypto sopa;
-    public static ArrayList<String> encontradas = new ArrayList();
-    public static ArrayList<String> validas;
+    public static Crypto crypto;
+    public static ArrayList<String> palabras;
+    public static int palabrasAcertadas;
+    public static int puntos;
+    public static int intentos;
     
     public static void nuevaPartida(){
-        encontradas.clear();
-        jugador = new Jugador();
-        validas = new ArrayList();
-        actualizarPalabrasValidas();
+        crypto = new Crypto();
+        palabras = new ArrayList();
+        intentos = 3;
+        palabrasAcertadas = 0;
+        puntos = 0;
+        cargarPalabras();
     }
     
-    public static boolean yaEncontrada(String palabra){
-        return encontradas.contains(palabra);
-    }
-    
-    public static void agregarPalabra(String palabra) {
-        encontradas.add(palabra);
-    }
-    
-    /**
-     * Este método actualiza la lista de palabras que es posible encontrar 
-     * dentro la sopa, tomando en cuenta los movimientos que puede hacer
-     * el jugador.
-     */
-    public static void actualizarPalabrasValidas(){
-        
-        validas.clear();
-        
+    public static void cargarPalabras(){
+                
         try(BufferedReader bf = new BufferedReader(new FileReader("resources\\palabras.txt"))){
              
             String palabra;
@@ -57,13 +45,25 @@ public abstract class Partida {
                                                
                 palabra = palabra.toUpperCase();
                 
-                if(valida && !encontradas.contains(palabra)){
-                    validas.add(palabra);
+                if(valida){
+                    palabras.add(palabra);
                 }
             }
             
         }catch(Exception e){}        
     }
-
     
+    public static void recargarIntentos(){
+        intentos = 3;
+    }
+    
+    public static void mistake(){
+        intentos--;
+        puntos -= 3;
+    }
+    
+    public static void acert(){
+        puntos += 3;
+        palabrasAcertadas++;
+    }
 }
