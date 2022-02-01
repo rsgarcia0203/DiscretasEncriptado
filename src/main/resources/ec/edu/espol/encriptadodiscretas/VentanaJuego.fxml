@@ -66,7 +66,7 @@
                               <Insets bottom="8.0" top="5.0" />
                            </HBox.margin>
                         </ImageView>
-                        <Label fx:id="words" prefHeight="45.0" prefWidth="18.0" text="0">
+                        <Label fx:id="words" prefHeight="45.0" prefWidth="44.0" text="0">
                            <HBox.margin>
                               <Insets bottom="5.0" left="5.0" />
                            </HBox.margin>
@@ -79,7 +79,7 @@
                               <Image url="@../img/pointsP.png" />
                            </image>
                         </ImageView>
-                        <Label fx:id="points" text="0">
+                        <Label fx:id="points" prefHeight="45.0" prefWidth="46.0" text="0">
                            <HBox.margin>
                               <Insets bottom="5.0" left="5.0" />
                            </HBox.margin>

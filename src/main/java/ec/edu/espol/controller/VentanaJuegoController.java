@@ -12,6 +12,8 @@ import ec.edu.espol.model.PartidaCrypto;
 import ec.edu.espol.model.Sound;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.animation.FadeTransition;
@@ -62,13 +64,19 @@ public class VentanaJuegoController implements Initializable {
     private GridPane gridpane;
     @FXML
     private Pane paneCentral;
+    private ArrayList<String> palabrasEnPantalla;
+    private LinkedList<StackPane> panes;
 
     /**
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {  
+    public void initialize(URL url, ResourceBundle rb) {
         encryptWord.setText(PartidaCrypto.crypto.encrypt("hola"));
+        palabrasEnPantalla = new ArrayList<>();
+        panes = new LinkedList<>();
+        generarPalabras();
+        setEncryptWord();
     }
 
     @FXML
@@ -146,6 +154,11 @@ public class VentanaJuegoController implements Initializable {
 
     }
 
+    private void setEncryptWord() {
+        int i = (int) (Math.random() * palabrasEnPantalla.size());
+        encryptWord.setText(PartidaCrypto.crypto.encrypt(palabrasEnPantalla.get(i)));
+    }
+
     private void success() {
 
         PartidaCrypto.acert();
@@ -153,25 +166,38 @@ public class VentanaJuegoController implements Initializable {
 
     }
 
-    private void compare() {
+    private boolean compare() {
 
         if ((PartidaCrypto.crypto.encrypt(selectedWord)).equals(encryptWord.getText())) {
             success();
             points.setText(String.valueOf(PartidaCrypto.puntos));
             words.setText(String.valueOf(PartidaCrypto.palabrasAcertadas));
+            return true;
 
         } else {
             mistake();
             points.setText(String.valueOf(PartidaCrypto.puntos));
             words.setText(String.valueOf(PartidaCrypto.palabrasAcertadas));
+            return false;
         }
 
     }
 
+    private void rechargeAttempts() {
+        a3.setVisible(true);
+        a2.setVisible(true);
+        a1.setVisible(true);
+    }
+
     public void generarPalabras() {
 
+        // Limpiamos nuestra pantalla y paneles
+        paneCentral.getChildren().clear();
+        panes.clear();
+        palabrasEnPantalla.clear();
+
         // Creo el GridPane que contendrá mis palabras desencriptadas
-        this.gridpane = new GridPane();
+        gridpane = new GridPane();
 
         double width = 795 / 3;
         double height = 271 / 3;
@@ -184,14 +210,47 @@ public class VentanaJuegoController implements Initializable {
 
                 int i = (int) (Math.random() * PartidaCrypto.palabras.size());
                 String palabra = PartidaCrypto.palabras.get(i); //Obtengo mi elemento por columna
-
                 StackPane pane = crearCasilla(width, height, palabra);
+                palabrasEnPantalla.add(palabra);
 
                 gridpane.add(pane, x, y); //Agrego al gridpane el contener en la posicion X,Y
+                panes.add(pane);
 
             }
         }
-        
+
+        paneCentral.getChildren().add(gridpane);
+    }
+
+    public void refrescarPantalla() {
+        // Limpiamos nustra pantalla
+        paneCentral.getChildren().clear();
+
+        // Creo el GridPane que contendrá mis palabras desencriptadas
+        gridpane = new GridPane();
+
+        int i = 0;
+        double width = 795 / 3;
+        double height = 271 / 3;
+
+        //Recorro mi sopa por fila y columna, uso for porque es esencial guardar las coordenadas (x,y) para el gridpana
+        for (int y = 0; y < 3; y++) {
+
+            // creación casillas con palabras
+            for (int x = 0; x < 3; x++) {
+
+                String palabra = palabrasEnPantalla.get(i); //Obtengo mi elemento por columna
+                StackPane pane = crearCasilla(width, height, palabra);
+
+                if (palabra.equals(selectedWord)) {
+                    pane.setStyle("-fx-background-color:#5db6ff");
+                }
+
+                gridpane.add(pane, x, y);
+                i++;
+            }
+        }
+
         paneCentral.getChildren().add(gridpane);
     }
 
@@ -223,7 +282,7 @@ public class VentanaJuegoController implements Initializable {
     }
 
     private void mouseEnteredPane(StackPane p) {
-        p.setStyle(p.getStyle() + " -fx-background-color:#5db6ff");
+        p.setStyle(" -fx-background-color:#5db6ff");
     }
 
     private void mouseExitedPane(StackPane p) {
@@ -232,17 +291,29 @@ public class VentanaJuegoController implements Initializable {
 
     public void seleccionarPalabra(Pane fondo, String palabra) {
         Sound.click();
-        
-        for (Node node: this.gridpane.getChildren()){
-            node.setStyle("-fx-border-color: black; -fx-border-style: solid; -fx-border-width: 0px;");
+
+        if (selectedWord == null) {
+            fondo.setStyle("-fx-background-color:#5db6ff");
+            this.selectedWord = palabra;
+        } else {
+            if (!selectedWord.equals(palabra)) {
+                fondo.setStyle("-fx-background-color:#5db6ff");
+                this.selectedWord = palabra;
+                refrescarPantalla();
+            } else {
+                fondo.setStyle("-fx-border-color: black; -fx-border-style: solid; -fx-border-width: 0px;");
+                this.selectedWord = "";
+            }
         }
-        
-        fondo.setStyle("-fx-background-color:#5db6ff");
-        this.selectedWord = palabra;        
 
     }
 
     @FXML
     private void send(MouseEvent event) {
+        if (compare() == true) {
+            this.generarPalabras();
+            PartidaCrypto.recargarIntentos();
+            rechargeAttempts();
+        }
     }
 }
