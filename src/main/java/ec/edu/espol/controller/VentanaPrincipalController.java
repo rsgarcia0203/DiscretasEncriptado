@@ -27,6 +27,8 @@ import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.InnerShadow;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
@@ -42,28 +44,11 @@ public class VentanaPrincipalController implements Initializable {
     @FXML
     private Label rowsLabel;
     @FXML
-    private Pane minusRow;
-    @FXML
-    private Pane plusRow;
-    private Pane minusColumn;
-    @FXML
     private Pane plusColumn;
-    private Pane previousLanguage;
-    private Pane nextLanguage;
-    private Pane goButton;
-    private Pane singleplayer;
-    private Pane multiplayer;
-
     private int jugadores = 1;
     private boolean xtreme = false;
-
-    private Pane exit;
-    @FXML
-    private Pane minusBet;
     @FXML
     private Label betLabel;
-    @FXML
-    private Pane plusBet;
     @FXML
     private ImageView timer;
     @FXML
@@ -75,11 +60,7 @@ public class VentanaPrincipalController implements Initializable {
     @FXML
     private ImageView btnExit;
     @FXML
-    private Pane btnL;
-    @FXML
     private ImageView gameMode;
-    @FXML
-    private Pane btnR;
     @FXML
     private ImageView btnSettings;
     @FXML
@@ -94,24 +75,10 @@ public class VentanaPrincipalController implements Initializable {
     private GameMode gm = GameMode.ONEPLAYER;
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        timer.setOnMouseClicked(e -> clickTimer(timer));
-        timer.setOnMouseEntered(e -> mouseEnteredButton(timer));
-        timer.setOnMouseDragExited(e -> mouseExitedButton(timer));
+    public void initialize(URL url, ResourceBundle rb) {    
     }
 
-    private void mouseEnteredButton(ImageView p) {
-        p.setOpacity((p.getOpacity() == 0.25) ? 0 : 0.25);
-    }
-
-    ;
-    
-    private void mouseExitedButton(ImageView p) {
-        p.setOpacity((p.getOpacity() == 0) ? 0.25 : 0.85);
-    }
-
-    ;
-
+    @FXML
     private void minusRow(MouseEvent event) {
         Sounds.clickOne();
         int rows = Integer.parseInt(rowsLabel.getText());
@@ -120,6 +87,7 @@ public class VentanaPrincipalController implements Initializable {
         }
     }
 
+    @FXML
     private void plusRow(MouseEvent event) {
         Sounds.clickOne();
         int rows = Integer.parseInt(rowsLabel.getText());
@@ -128,6 +96,7 @@ public class VentanaPrincipalController implements Initializable {
         }
     }
 
+    @FXML
     private void minusColumn(MouseEvent event) {
         Sounds.clickOne();
         int columns = Integer.parseInt(columnsLabel.getText());
@@ -136,26 +105,13 @@ public class VentanaPrincipalController implements Initializable {
         }
     }
 
+    @FXML
     private void plusColumn(MouseEvent event) {
         Sounds.clickOne();
         int columns = Integer.parseInt(columnsLabel.getText());
         if (columns < 20) {
             columnsLabel.setText(String.valueOf(++columns));
         }
-    }
-
-    private void singleplayer(MouseEvent event) {
-        Sounds.click();
-        singleplayer.setOpacity(0);
-        multiplayer.setOpacity(0.85);
-        jugadores = 1;
-    }
-
-    private void multiplayer(MouseEvent event) {
-        Sounds.click();
-        multiplayer.setOpacity(0);
-        singleplayer.setOpacity(0.85);
-
     }
 
     @FXML
@@ -173,8 +129,6 @@ public class VentanaPrincipalController implements Initializable {
     @FXML
     private void plusBet(MouseEvent event) {
         Sounds.click();
-        singleplayer.setOpacity(0.25);
-        multiplayer.setOpacity(0.85);
         jugadores = 1;
 
         int apuesta = Integer.parseInt(betLabel.getText());
@@ -184,12 +138,6 @@ public class VentanaPrincipalController implements Initializable {
         if (apuesta == 90) {
             betLabel.setText(String.valueOf(apuesta + 9));
         }
-    }
-
-    private void clickTimer(ImageView p) {
-        Sounds.clickOne();
-        p.setOpacity((p.getOpacity() == 0.25) ? 0.0 : 0.85);
-        xtreme = !xtreme;
     }
 
     @FXML
@@ -208,7 +156,7 @@ public class VentanaPrincipalController implements Initializable {
         }
 
         try {
-            App.setRoot("VentanaJuego");
+            App.setRoot("VentanaPreJuego");
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -270,28 +218,13 @@ public class VentanaPrincipalController implements Initializable {
     private void changeGameMode(MouseEvent event) {
         Sounds.clickOne();
 
-        if (btnR.isPressed()) {
-
-            if (gm == GameMode.ONEPLAYER) {
-                gm = GameMode.TWOPLAYERS;
-                jugadores = 2;
-                betLabel.setText("0");
-            } else if (gm == GameMode.TWOPLAYERS) {
-                gm = GameMode.ONEPLAYER;
-                jugadores = 1;
-            }
-
-        } else if (btnL.isPressed()) {
-
-            if (gm == GameMode.TWOPLAYERS) {
-                gm = GameMode.ONEPLAYER;
-                jugadores = 1;
-            } else if (gm == GameMode.ONEPLAYER) {
-                gm = GameMode.TWOPLAYERS;
-                jugadores = 2;
-                betLabel.setText("0");
-            }
-
+        if (gm == GameMode.ONEPLAYER) {
+            gm = GameMode.TWOPLAYERS;
+            jugadores = 2;
+            betLabel.setText("0");
+        } else if (gm == GameMode.TWOPLAYERS) {
+            gm = GameMode.ONEPLAYER;
+            jugadores = 1;
         }
 
         gameMode.setImage(new Image(gm.ruta));
@@ -347,6 +280,50 @@ public class VentanaPrincipalController implements Initializable {
     private void actualizarPantalla() {
         opacityPanel.setVisible(false);
         optionsPane.setVisible(false);
+    }
+
+    @FXML
+    private void timerReleased(MouseEvent event) {
+        if (xtreme == true) {
+            timer.setOpacity(1);
+        } else {
+            timer.setOpacity(0.50);
+        }
+    }
+
+    @FXML
+    private void timerExited(MouseEvent event) {
+        if (xtreme == true) {
+            timer.setOpacity(1);
+        } else {
+            timer.setOpacity(0.50);
+        }
+    }
+
+    @FXML
+    private void timerHover(MouseEvent event) {
+        if (xtreme == true) {
+            timer.setOpacity(0.80);
+        } else {
+            timer.setOpacity(0.70);
+        }
+    }
+
+    @FXML
+    private void clickTimer(MouseEvent event) {
+        Sounds.clickOne();
+        xtreme = !xtreme;
+    }
+
+    @FXML
+    private void timerPressed(MouseEvent event) {
+        if (xtreme == true) {
+            timer.setOpacity(0.55);
+            Sounds.click();
+        } else {
+            timer.setOpacity(0.40);
+            Sounds.click();
+        }
     }
 
 }

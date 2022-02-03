@@ -1,0 +1,32 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.BGpane {
+    -fx-background-image: url('img/BG-principal.png');
+    -fx-background-size: 100% 100%;
+}
+
+.label{
+   -fx-font-size: 50;
+   -fx-text-fill: black;
+   -fx-font-weight: bold;
+}
+
+.lbl2{
+    -fx-font-size: 40;
+   -fx-text-fill: white;
+   -fx-font-weight: bold;
+}
+
+.btn{
+    -fx-opacity: 0.80;    
+}
+
+.btn:hover{
+    -fx-opacity: 1;    
+}
+
+.btn:pressed{
+    -fx-opacity: 0.55;    
+}

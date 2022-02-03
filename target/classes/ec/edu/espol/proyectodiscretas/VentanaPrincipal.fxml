@@ -72,7 +72,7 @@
                   </ImageView>
                   <HBox layoutX="63.0" layoutY="347.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="280.0" spacing="5.0">
                      <children>
-                        <Pane fx:id="btnL" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#changeGameMode" onMouseEntered="#mouseHover" opacity="0.8" prefHeight="150.0" prefWidth="46.0" styleClass="selectionPane">
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#changeGameMode" onMouseEntered="#mouseHover" opacity="0.8" prefHeight="150.0" prefWidth="46.0" styleClass="selectionPane">
                            <children>
                               <Label alignment="CENTER" layoutX="13.0" layoutY="56.0" text="⮜">
                                  <font>
@@ -117,7 +117,7 @@
                               </ImageView>
                            </children>
                         </Pane>
-                        <Pane fx:id="btnR" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#changeGameMode" onMouseEntered="#mouseHover" opacity="0.8" prefHeight="150.0" prefWidth="46.0" styleClass="selectionPane">
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#changeGameMode" onMouseEntered="#mouseHover" opacity="0.8" prefHeight="150.0" prefWidth="46.0" styleClass="selectionPane">
                            <children>
                               <Label alignment="CENTER" layoutX="2.0" layoutY="56.0" prefHeight="27.0" prefWidth="43.0" text="⮞">
                                  <font>
@@ -146,7 +146,7 @@
                         <DropShadow />
                      </effect>
                   </HBox>
-                  <ImageView fx:id="timer" fitHeight="150.0" fitWidth="200.0" layoutX="346.0" layoutY="585.0" onMouseEntered="#mouseHover" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="timer" fitHeight="150.0" fitWidth="200.0" layoutX="346.0" layoutY="585.0" onMouseClicked="#clickTimer" onMouseEntered="#timerHover" onMouseExited="#timerExited" onMousePressed="#timerPressed" onMouseReleased="#timerReleased" opacity="0.5" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@img/timer.png" />
                      </image>
@@ -208,7 +208,7 @@
                               </HBox>
                               <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="51.0" prefWidth="280.0" spacing="5.0">
                                  <children>
-                                    <VBox fx:id="minusBet" alignment="CENTER" minWidth="-Infinity" onMouseClicked="#minusBet" onMouseEntered="#mouseHover" prefHeight="44.0" prefWidth="37.0" styleClass="selectionPane">
+                                    <VBox alignment="CENTER" minWidth="-Infinity" onMouseClicked="#minusBet" onMouseEntered="#mouseHover" prefHeight="44.0" prefWidth="37.0" styleClass="selectionPane">
                                        <children>
                                           <Label alignment="CENTER" prefHeight="38.0" prefWidth="52.0" text="⮜">
                                              <font>
@@ -240,7 +240,7 @@
                                           <Label fx:id="betLabel" alignment="CENTER" layoutX="75.0" layoutY="6.0" prefHeight="38.0" prefWidth="55.0" text="10" />
                                        </children>
                                     </Pane>
-                                    <VBox fx:id="plusBet" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#plusBet" onMouseEntered="#mouseHover" prefHeight="50.0" prefWidth="40.0" styleClass="selectionPane">
+                                    <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#plusBet" prefHeight="50.0" prefWidth="40.0" styleClass="selectionPane">
                                        <children>
                                           <Label alignment="CENTER" prefHeight="27.0" prefWidth="43.0" text="⮞">
                                              <font>
@@ -285,7 +285,7 @@
                               </HBox>
                               <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="51.0" prefWidth="280.0" spacing="5.0">
                                  <children>
-                                    <VBox fx:id="minusRow" alignment="CENTER" minWidth="-Infinity" onMouseClicked="#minusBet" onMouseEntered="#mouseHover" prefHeight="44.0" prefWidth="37.0" styleClass="selectionPane">
+                                    <VBox alignment="CENTER" minWidth="-Infinity" onMouseClicked="#minusRow" onMouseEntered="#mouseHover" prefHeight="44.0" prefWidth="37.0" styleClass="selectionPane">
                                        <children>
                                           <Label alignment="CENTER" prefHeight="38.0" prefWidth="52.0" text="⮜">
                                              <font>
@@ -317,7 +317,7 @@
                                           <Label fx:id="rowsLabel" alignment="CENTER" layoutX="75.0" layoutY="6.0" prefHeight="38.0" prefWidth="55.0" text="8" wrapText="true" />
                                        </children>
                                     </Pane>
-                                    <VBox fx:id="plusRow" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#plusBet" onMouseEntered="#mouseHover" prefHeight="50.0" prefWidth="40.0" styleClass="selectionPane">
+                                    <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#plusRow" onMouseEntered="#mouseHover" prefHeight="50.0" prefWidth="40.0" styleClass="selectionPane">
                                        <children>
                                           <Label alignment="CENTER" prefHeight="27.0" prefWidth="43.0" text="⮞">
                                              <font>
@@ -362,7 +362,7 @@
                               </HBox>
                               <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="51.0" prefWidth="280.0" spacing="5.0">
                                  <children>
-                                    <VBox fx:id="minusColum" alignment="CENTER" minWidth="-Infinity" onMouseClicked="#minusBet" onMouseEntered="#mouseHover" prefHeight="44.0" prefWidth="37.0" styleClass="selectionPane">
+                                    <VBox fx:id="minusColum" alignment="CENTER" minWidth="-Infinity" onMouseClicked="#minusColumn" onMouseEntered="#mouseHover" prefHeight="44.0" prefWidth="37.0" styleClass="selectionPane">
                                        <children>
                                           <Label alignment="CENTER" prefHeight="38.0" prefWidth="52.0" text="⮜">
                                              <font>
@@ -394,7 +394,7 @@
                                           <Label fx:id="columnsLabel" alignment="CENTER" layoutX="75.0" layoutY="6.0" prefHeight="38.0" prefWidth="55.0" text="8" />
                                        </children>
                                     </Pane>
-                                    <VBox fx:id="plusColumn" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#plusBet" onMouseEntered="#mouseHover" prefHeight="50.0" prefWidth="40.0" styleClass="selectionPane">
+                                    <VBox fx:id="plusColumn" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#plusColumn" onMouseEntered="#mouseHover" prefHeight="50.0" prefWidth="40.0" styleClass="selectionPane">
                                        <children>
                                           <Label alignment="CENTER" prefHeight="27.0" prefWidth="43.0" text="⮞">
                                              <font>

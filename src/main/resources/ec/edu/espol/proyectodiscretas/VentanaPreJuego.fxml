@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1280.0" styleClass="BGpane" stylesheets="@ventanaprejuego.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.controller.VentanaPreJuegoController">
+   <children>
+      <ImageView fitHeight="540.0" fitWidth="739.0" layoutX="269.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/logo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="401.0" fitWidth="1013.0" layoutX="154.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/explanation.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="414.0" layoutY="290.0" prefHeight="57.0" prefWidth="36.0" text="A" />
+      <Label layoutX="494.0" layoutY="290.0" prefHeight="57.0" prefWidth="36.0" text="B" />
+      <Label layoutX="572.0" layoutY="290.0" prefHeight="57.0" prefWidth="36.0" text="C" />
+      <Label layoutX="650.0" layoutY="290.0" prefHeight="57.0" prefWidth="36.0" text="D" />
+      <Label layoutX="729.0" layoutY="290.0" prefHeight="57.0" prefWidth="36.0" text="E" />
+      <Label layoutX="811.0" layoutY="290.0" prefHeight="57.0" prefWidth="36.0" text="F" />
+      <Label layoutX="179.0" layoutY="290.0" opacity="0.3" prefHeight="57.0" prefWidth="36.0" text="X" />
+      <Label layoutX="337.0" layoutY="290.0" opacity="0.3" prefHeight="57.0" prefWidth="36.0" text="Z" />
+      <Label layoutX="260.0" layoutY="290.0" opacity="0.3" prefHeight="57.0" prefWidth="36.0" text="Y" />
+      <Label fx:id="e7" alignment="CENTER" layoutX="397.0" layoutY="604.0" prefHeight="73.0" prefWidth="71.0" text="I" />
+      <Label fx:id="e8" alignment="CENTER" layoutX="478.0" layoutY="604.0" prefHeight="73.0" prefWidth="71.0" text="J" />
+      <Label fx:id="e9" alignment="CENTER" layoutX="556.0" layoutY="604.0" prefHeight="73.0" prefWidth="71.0" text="K" />
+      <Label fx:id="e1" alignment="CENTER" layoutX="635.0" layoutY="604.0" prefHeight="73.0" prefWidth="71.0" text="L" />
+      <Label fx:id="e2" alignment="CENTER" layoutX="713.0" layoutY="604.0" prefHeight="73.0" prefWidth="71.0" text="M" />
+      <Label fx:id="e3" alignment="CENTER" layoutX="793.0" layoutY="604.0" prefHeight="73.0" prefWidth="71.0" text="N" />
+      <Label fx:id="e4" alignment="CENTER" layoutX="869.0" layoutY="604.0" opacity="0.3" prefHeight="73.0" prefWidth="71.0" text="X" />
+      <Label fx:id="e6" alignment="CENTER" layoutX="1025.0" layoutY="604.0" opacity="0.3" prefHeight="73.0" prefWidth="71.0" text="Z" />
+      <Label fx:id="e5" alignment="CENTER" layoutX="948.0" layoutY="604.0" opacity="0.3" prefHeight="73.0" prefWidth="71.0" text="Y" />
+      <Label layoutX="142.0" layoutY="130.0" prefHeight="152.0" prefWidth="986.0" styleClass="lbl2" text="Para este juego usaremos el metodo de encriptación Cesar, el cual funciona de la siguiente manera:" wrapText="true" />
+      <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="595.0" layoutY="715.0" onMouseClicked="#checked" pickOnBounds="true" preserveRatio="true" styleClass="btn">
+         <image>
+            <Image url="@img/checked.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+   </children>
+</AnchorPane>

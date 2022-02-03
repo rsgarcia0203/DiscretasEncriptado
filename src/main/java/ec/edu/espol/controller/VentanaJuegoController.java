@@ -232,7 +232,7 @@ public class VentanaJuegoController implements Initializable {
         //creación letras
         StackPane pane = new StackPane();
         pane.setPrefSize(width, height);
-        pane.setStyle("-fx-border-color: black; -fx-border-style: solid; -fx-border-width: 2px; -fx-background-color: #C0C0C0; -fx-text-fill: #ffffff;");
+        pane.setStyle("-fx-border-color: black; -fx-border-style: solid; -fx-border-width: 2px; -fx-background-color: gray; -fx-text-fill: #ffffff;");
         pane.setCursor(Cursor.HAND);
 
         Label letra = new Label(String.valueOf(c)); //Lo contengo en un label para mostrar
@@ -338,7 +338,7 @@ public class VentanaJuegoController implements Initializable {
                     .filter((Node n) -> (GridPane.getRowIndex(n) == n_fila))
                     .forEach((Node n) -> n.setStyle(n.getStyle() + " -fx-background-color: #2EDE11;"));
         } else {
-            p.setStyle(p.getStyle() + " -fx-background-color: #BFE1FF;");
+            p.setStyle("-fx-border-color: black; -fx-border-style: solid; -fx-border-width: 2px; -fx-background-color: #BFE1FF; -fx-text-fill: #ffffff; ");
         }
     }
 
@@ -350,13 +350,13 @@ public class VentanaJuegoController implements Initializable {
         if (modoEliminarColumna || modoAgregarColumna) {
             gridpane.getChildren().stream()
                     .filter((Node n) -> (GridPane.getColumnIndex(n) == n_columna))
-                    .forEach((Node n) -> n.setStyle("-fx-background-color: gray; -fx-border-color: black; -fx-border-style: solid; -fx-border-width: 1px;"));
+                    .forEach((Node n) -> n.setStyle("-fx-background-color: gray; -fx-border-color: black; -fx-border-style: solid; -fx-border-width: 2px;"));
         } else if (modoEliminarFila || modoAgregarFila) {
             gridpane.getChildren().stream()
                     .filter((Node n) -> (GridPane.getRowIndex(n) == n_fila))
-                    .forEach((Node n) -> n.setStyle("-fx-background-color: gray; -fx-border-color: black; -fx-border-style: solid; -fx-border-width: 1px;"));
+                    .forEach((Node n) -> n.setStyle("-fx-background-color: gray; -fx-border-color: black; -fx-border-style: solid; -fx-border-width: 2px;"));
         } else {
-            p.setStyle("-fx-background-color: gray; -fx-border-color: black; -fx-border-style: solid; -fx-border-width: 1px; -fx-text-fill: #ffffff;");
+            p.setStyle("-fx-background-color: gray; -fx-border-color: black; -fx-border-style: solid; -fx-border-width: 2px; -fx-text-fill: #ffffff;");
         }
     }
 
@@ -492,6 +492,7 @@ public class VentanaJuegoController implements Initializable {
     private void comprobarModificaciones() {
         if (jugadorActual.getModificaciones() == 0) {
             buttons.setDisable(true);
+            buttons.setOpacity(0.25);
         } else {
             buttons.setDisable(false);
         }
@@ -672,7 +673,7 @@ public class VentanaJuegoController implements Initializable {
             a.show();
 
             try {
-                App.setRoot("MainMenu");
+                App.setRoot("VentanaPrincipal");
             } catch (IOException ex) {
             }
 
@@ -695,7 +696,7 @@ public class VentanaJuegoController implements Initializable {
             }
 
             try {
-                App.setRoot("MainMenu");
+                App.setRoot("VentanaPrincipal");
             } catch (IOException ex) {
             }
 
@@ -712,7 +713,7 @@ public class VentanaJuegoController implements Initializable {
     @FXML
     private void exitToMenu(MouseEvent event) {
         try {
-            App.setRoot("MainMenu");
+            App.setRoot("VentanaPrincipal");
         } catch (IOException ex) {
             ex.printStackTrace();
         }

@@ -23,65 +23,68 @@ public abstract class CesarEncrypt {
 
     // primero obtenemos las claves de nuestro abecedario con la cantidad n de desplazamientos
     public static void getEncodeChars() {
-        
+
         // La cantidad de desplazamientos será aleatoria
-        int displacement = (int) (Math.random() * CHARS.length());
-        
-        if (displacement >= CHARS.length()) {
-            throw new IndexOutOfBoundsException("");
-        } else {
-            for (int i = 0; i < charsArray.length; i++) {
+        int displacement;
+
+        do {
+            displacement = (int) (Math.random() * CHARS.length());
+        } while (displacement < 3 && displacement < CHARS.length());
+
+        for (int i = 0; i < charsArray.length; i++) {
+            if (encodeChars.size() != CHARS.length() || decodeChars.size() != CHARS.length()) {
                 encodeChars.put(charsArray[i], charsArray[i + displacement]);
                 decodeChars.put(charsArray[i + displacement], charsArray[i]);
             }
+            System.out.println("||");
+            System.out.println(encodeChars);
+            System.out.println(decodeChars);
         }
 
     }
 
     public static String encodeWord(ArrayList<Letra> letters) {
         StringBuilder encodeword = new StringBuilder();
-        
+
         for (Letra letra : letters) {
             String encodeLetter = encodeChars.get(letra.getLetra()).toString();
             encodeword.append(encodeLetter);
         }
-        
+
         return encodeword.toString();
     }
-    
+
     public static String encodeWord(String word) {
         StringBuilder encodeword = new StringBuilder();
-        
+
         for (char letra : word.toCharArray()) {
             String encodeLetter = encodeChars.get(letra).toString();
             encodeword.append(encodeLetter);
         }
-        
+
         return encodeword.toString();
     }
 
     public static String decodeWord(ArrayList<Letra> letters) {
         StringBuilder decodeword = new StringBuilder();
-        
+
         for (Letra letra : letters) {
             String encodeLetter = decodeChars.get(letra.getLetra()).toString();
             decodeword.append(encodeLetter);
         }
-        
+
         return decodeword.toString();
     }
-    
+
     public static String decodeWord(String word) {
         StringBuilder decodeword = new StringBuilder();
-        
+
         for (char letra : word.toCharArray()) {
             String encodeLetter = decodeChars.get(letra).toString();
             decodeword.append(encodeLetter);
         }
-        
+
         return decodeword.toString();
     }
-    
-    
 
 }
