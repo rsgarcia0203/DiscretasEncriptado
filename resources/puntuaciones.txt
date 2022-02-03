@@ -1,0 +1,10 @@
+spectron,300
+garca,299
+mathi,250
+nelson,250
+ronny,230
+meiyin,220
+juan,219
+sasuke,200
+spectnaz,199
+mary,198

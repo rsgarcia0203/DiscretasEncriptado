@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import javafx.scene.image.Image;
 
 /**
  * JavaFX App
@@ -18,8 +19,10 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("VentanaPrincipal"));
-        stage.setScene(scene);
+        stage.setScene(scene); 
         stage.show();
+        stage.setTitle("CRYPTOGAME");
+        stage.getIcons().add(new Image("ec\\edu\\espol\\proyectodiscretas\\img\\icon.png"));
     }
 
     public static void setRoot(String fxml) throws IOException {

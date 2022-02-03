@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="BackgroundPane" prefHeight="800.0" prefWidth="1280.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="ec.edu.espol.controller.VentanaPuntuacionesController">
+    <stylesheets>
+        <URL value="@ventanapuntuaciones.css" />
+    </stylesheets>
+   <children>
+      <AnchorPane layoutX="99.0" layoutY="68.0" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Pane prefHeight="599.0" prefWidth="1082.0" styleClass="pane" />
+            <Pane prefHeight="599.0" prefWidth="1082.0">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="599.0" prefWidth="1081.0">
+                     <children>
+                        <ImageView fitHeight="467.0" fitWidth="696.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../../../DiscretasEncriptado/src/main/resources/ec/edu/espol/img/clasification.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets bottom="20.0" top="20.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <GridPane alignment="CENTER" gridLinesVisible="true" prefHeight="518.0" prefWidth="1080.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="69.0" minHeight="10.0" prefHeight="56.0" valignment="CENTER" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="39.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <ImageView fitHeight="52.0" fitWidth="393.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                 <image>
+                                    <Image url="@../../../../../../../../DiscretasEncriptado/src/main/resources/ec/edu/espol/img/player.png" />
+                                 </image>
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                              </ImageView>
+                              <ImageView fitHeight="66.0" fitWidth="270.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                 <image>
+                                    <Image url="@../../../../../../../../DiscretasEncriptado/src/main/resources/ec/edu/espol/img/points.png" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="j1" text="SPECTRON" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                              <Label fx:id="j2" text="GARCA" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                              <Label fx:id="j3" text="MATHI" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                              <Label fx:id="j4" text="NELSON" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                              <Label fx:id="j5" text="RONNY" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                              <Label fx:id="j6" text="MEIYIN" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+                              <Label fx:id="j7" text="JUAN" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
+                              <Label fx:id="j8" text="SASUKE" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
+                              <Label fx:id="j9" text="SPECTNAZ" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER" />
+                              <Label fx:id="j10" text="MARY" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="CENTER" />
+                              <Label fx:id="p1" text="300" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                              <Label fx:id="p2" text="299" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                              <Label fx:id="p3" text="280" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                              <Label fx:id="p4" text="250" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                              <Label fx:id="p5" text="230" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                              <Label fx:id="p6" text="220" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+                              <Label fx:id="p7" text="219" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
+                              <Label fx:id="p8" text="200" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
+                              <Label fx:id="p9" text="199" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER" />
+                              <Label fx:id="p10" text="198" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="CENTER" />
+                           </children>
+                        </GridPane>
+                     </children>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </VBox>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="NONE" />
+               </cursor>
+            </Pane>
+         </children>
+      </AnchorPane>
+      <ImageView fx:id="btnBack" fitHeight="87.0" fitWidth="91.0" layoutX="24.0" layoutY="687.0" onMouseClicked="#toMain" onMouseEntered="#mouseHover" pickOnBounds="true" preserveRatio="true" styleClass="btn">
+         <image>
+            <Image url="@img/return.png" />
+         </image>
+         <effect>
+            <DropShadow />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+   </children>
+</AnchorPane>

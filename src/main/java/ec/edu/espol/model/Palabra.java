@@ -1,5 +1,6 @@
 package ec.edu.espol.model;
 
+import ec.edu.espol.security.CesarEncrypt;
 import ec.edu.espol.util.ArrayList;
 import java.util.Objects;
 
@@ -13,20 +14,20 @@ public class Palabra {
         this.jugador = jugador;
     }
 
-    public Intento comprobar() {
-        
+    public Intento comprobar(String encryptword) {
+
         StringBuilder palabra = new StringBuilder();
         for (Letra letra : letras) {
             palabra.append(letra.toString());
         }
-        
-        Intento intento = comprobarPalabra(palabra.toString());
+
+        Intento intento = comprobarPalabra(palabra.toString(), encryptword);
         if (intento == Intento.ERROR) {
-            intento = comprobarPalabra(palabra.reverse().toString());
+            intento = comprobarPalabra(palabra.reverse().toString(), encryptword);
         }
-        
+
         int puntos = getPuntos(intento);
-        
+
         jugador.sumarPuntos(puntos);
         if (puntos > 0) {
             return Intento.ACIERTO;
@@ -40,7 +41,7 @@ public class Palabra {
 
     private int getPuntos(Intento intento) {
         int puntos = letras.size();
-        
+
         switch (intento) {
             case ACIERTO:
                 return puntos;
@@ -51,20 +52,23 @@ public class Palabra {
         }
     }
 
-    private Intento comprobarPalabra(String palabra) {
+    private Intento comprobarPalabra(String palabra, String palabraEncriptada) {
         if (Partida.yaEncontrada(this) && Partida.encontradas_string.contains(palabra)) {
             return Intento.YA_ENCONTRADA;
         } else if (Partida.validas.contains(palabra) || Partida.encontradas_string.contains(palabra)) {
 
-            jugador.agregarPalabra(palabra);
-            Partida.agregarPalabra(this, palabra);
-            Partida.actualizarPalabrasValidas();
-            
-            for(Letra letra: letras){
-                letra.usar();
+            if (CesarEncrypt.decodeWord(palabra).equals(palabraEncriptada)) {
+                jugador.agregarPalabra(palabra);
+                Partida.agregarPalabra(this, palabra);
+                Partida.actualizarPalabrasValidas();
+
+                for (Letra letra : letras) {
+                    letra.usar();
+                }
+
+                return Intento.ACIERTO;
             }
-            
-            return Intento.ACIERTO;
+
         }
 
         return Intento.ERROR;

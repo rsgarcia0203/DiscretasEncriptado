@@ -142,9 +142,13 @@ public abstract class Partida {
         }
     }
     
-    public String decodeAleatoryWord(){
+    public static String decodeAleatoryWord(){
         int i = (int) (Math.random() * validas.size());
-        String palabra = validas.get(i);
-        return CesarEncrypt.decodeWord(palabra);
+        String palabra; 
+        do{
+            palabra = validas.get(i);
+        } while (palabra.length() > sopa.getN_columnas() && palabra.length() > sopa.getN_filas());
+        System.out.println(palabra);
+        return CesarEncrypt.encodeWord(palabra);
     }
 }

@@ -41,6 +41,7 @@ import ec.edu.espol.model.Intento;
 import ec.edu.espol.model.Letra;
 import ec.edu.espol.model.Palabra;
 import ec.edu.espol.model.Sopa;
+import ec.edu.espol.security.CesarEncrypt;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
@@ -162,7 +163,9 @@ public class VentanaJuegoController implements Initializable {
             timer.play();
 
         }
-
+        
+        this.encriptWord.setText(Partida.decodeAleatoryWord());
+        System.out.println(CesarEncrypt.decodeWord(this.encriptWord.getText()));
     }
 
     public void generarSopa() {
@@ -618,7 +621,7 @@ public class VentanaJuegoController implements Initializable {
             return;
         }
         Palabra p = new Palabra(letras, jugadorActual);
-        Intento intento = p.comprobar(); // comprobar inserta la palabra en las encontradas
+        Intento intento = p.comprobar(encriptWord.getText()); // comprobar inserta la palabra en las encontradas
 
         switch (intento) {
             case ERROR:
@@ -721,6 +724,7 @@ public class VentanaJuegoController implements Initializable {
 
     @FXML
     private void mouseHover(MouseEvent event) {
+        Sounds.hover();
     }
 
 }

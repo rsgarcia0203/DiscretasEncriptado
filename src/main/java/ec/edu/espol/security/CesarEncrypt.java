@@ -36,10 +36,10 @@ public abstract class CesarEncrypt {
                 encodeChars.put(charsArray[i], charsArray[i + displacement]);
                 decodeChars.put(charsArray[i + displacement], charsArray[i]);
             }
-            System.out.println("||");
-            System.out.println(encodeChars);
-            System.out.println(decodeChars);
         }
+        System.out.println(encodeChars);
+        System.out.println("||");
+        System.out.println(decodeChars);
 
     }
 
