@@ -1,0 +1,46 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2 feb. 2022, 18:42:08
+    Author     : rsgar
+*/
+#BackgroundPane {
+    -fx-background-image: url('img/BG-principal.png');
+    -fx-background-size: 100% 100%;
+    -fx-background-color:transparent;
+    -fx-font-size:30;
+}
+
+.btn{
+    -fx-opacity: 0.80;    
+}
+
+.btn:hover{
+    -fx-opacity: 1;    
+}
+
+.btn:pressed{
+    -fx-opacity: 0.55;    
+}
+
+.label{
+   -fx-font-size: 26;
+   -fx-text-fill: #ffffff;
+   -fx-font-weight: bold;
+}
+
+.scrollPane{
+    -fx-background-color: transparent;
+}
+
+.bgPane{
+    -fx-background-color:linear-gradient(#151928,#2196f3);
+    -fx-opacity: 0.8;
+}
+
+.cont{
+    -fx-opacity: 1;
+}

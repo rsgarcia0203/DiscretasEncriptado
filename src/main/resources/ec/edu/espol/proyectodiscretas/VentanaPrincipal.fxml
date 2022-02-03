@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="BackgroundPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@ventanaprincipal.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.controller.VentanaPrincipalController">
+   <children>
+      <BorderPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0">
+         <center>
+            <Pane prefHeight="316.0" prefWidth="1280.0" styleClass="pane" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="540.0" fitWidth="739.0" layoutX="271.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/logo.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="btnStart" fitHeight="238.0" fitWidth="221.0" layoutX="530.0" layoutY="276.0" onMouseClicked="#startGame" onMouseEntered="#mouseHover" pickOnBounds="true" preserveRatio="true" styleClass="btn">
+                     <image>
+                        <Image url="@img/start-game.png" />
+                     </image>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fx:id="btn_points" fitHeight="196.0" fitWidth="215.0" layoutX="990.0" layoutY="302.0" onMouseClicked="#pointsWindow" onMouseEntered="#mouseHover" pickOnBounds="true" preserveRatio="true" styleClass="btn">
+                     <image>
+                        <Image url="@img/leaderboard.png" />
+                     </image>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fx:id="btnInfo" fitHeight="87.0" fitWidth="91.0" layoutX="58.0" layoutY="660.0" onMouseClicked="#infoWindow" onMouseEntered="#mouseHover" pickOnBounds="true" preserveRatio="true" styleClass="btn">
+                     <image>
+                        <Image url="@img/info.png" />
+                     </image>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fx:id="btnExit" fitHeight="150.0" fitWidth="200.0" layoutX="1061.0" layoutY="613.0" onMouseClicked="#exit" onMouseEntered="#mouseHover" pickOnBounds="true" preserveRatio="true" styleClass="btn">
+                     <image>
+                        <Image url="@img/exit.png" />
+                     </image>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <HBox layoutX="63.0" layoutY="347.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="280.0" spacing="5.0">
+                     <children>
+                        <Pane fx:id="btnL" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#changeGameMode" onMouseEntered="#mouseHover" opacity="0.8" prefHeight="150.0" prefWidth="46.0" styleClass="selectionPane">
+                           <children>
+                              <Label alignment="CENTER" layoutX="13.0" layoutY="56.0" text="⮜">
+                                 <font>
+                                    <Font size="54.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <effect>
+                                    <InnerShadow />
+                                 </effect>
+                              </Label>
+                           </children>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Pane>
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.75" prefHeight="150.0" prefWidth="161.0" styleClass="bgpane">
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                           <children>
+                              <ImageView fx:id="gameMode" fitHeight="150.0" fitWidth="150.0" layoutX="5.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/one-player.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Pane fx:id="btnR" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#changeGameMode" onMouseEntered="#mouseHover" opacity="0.8" prefHeight="150.0" prefWidth="46.0" styleClass="selectionPane">
+                           <children>
+                              <Label alignment="CENTER" layoutX="2.0" layoutY="56.0" prefHeight="27.0" prefWidth="43.0" text="⮞">
+                                 <font>
+                                    <Font size="54.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <effect>
+                                    <InnerShadow />
+                                 </effect>
+                              </Label>
+                           </children>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Pane>
+                     </children>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </HBox>
+                  <ImageView fx:id="timer" fitHeight="150.0" fitWidth="200.0" layoutX="346.0" layoutY="585.0" onMouseEntered="#mouseHover" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/timer.png" />
+                     </image>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fx:id="btnSettings" fitHeight="150.0" fitWidth="200.0" layoutX="785.0" layoutY="585.0" onMouseClicked="#showSettings" onMouseEntered="#mouseHover" pickOnBounds="true" preserveRatio="true" styleClass="btn">
+                     <image>
+                        <Image url="@img/setting.png" />
+                     </image>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <Pane fx:id="opacityPanel" layoutX="-7.0" layoutY="-7.0" opacity="0.0" prefHeight="800.0" prefWidth="1280.0" styleClass="bgpane" visible="false" />
+                  <VBox id="OptionsPane" fx:id="optionsPane" alignment="CENTER" layoutX="411.0" layoutY="-150.0" opacity="0.0" prefHeight="487.0" prefWidth="439.0" spacing="10.0" visible="false">
+                     <children>
+                        <Pane prefHeight="67.0" prefWidth="439.0">
+                           <children>
+                              <Text layoutX="100.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Opciones" textAlignment="JUSTIFY">
+                                 <font>
+                                    <Font name="System Bold" size="55.0" />
+                                 </font>
+                              </Text>
+                              <ImageView fx:id="btnClose" fitHeight="32.0" fitWidth="32.0" layoutX="393.0" layoutY="-2.0" onMouseClicked="#closeSettings" onMouseEntered="#mouseHover" pickOnBounds="true" preserveRatio="true" styleClass="btn">
+                                 <image>
+                                    <Image url="@img/cancel.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="40.0" />
+                           </VBox.margin>
+                        </Pane>
+                        <VBox alignment="CENTER" prefHeight="76.0" prefWidth="285.0">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="37.0" prefWidth="285.0">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="lblPane">
+                                       <children>
+                                          <Label prefHeight="38.0" prefWidth="121.0" text="APUESTA" wrapText="true">
+                                             <font>
+                                                <Font name="Britannic Bold" size="27.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </HBox>
+                              <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="51.0" prefWidth="280.0" spacing="5.0">
+                                 <children>
+                                    <VBox fx:id="minusBet" alignment="CENTER" minWidth="-Infinity" onMouseClicked="#minusBet" onMouseEntered="#mouseHover" prefHeight="44.0" prefWidth="37.0" styleClass="selectionPane">
+                                       <children>
+                                          <Label alignment="CENTER" prefHeight="38.0" prefWidth="52.0" text="⮜">
+                                             <font>
+                                                <Font size="54.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <effect>
+                                                <InnerShadow />
+                                             </effect>
+                                          </Label>
+                                       </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </VBox>
+                                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.85" prefHeight="49.0" prefWidth="200.0" styleClass="showlblPane">
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                       <children>
+                                          <Label fx:id="betLabel" alignment="CENTER" layoutX="75.0" layoutY="6.0" prefHeight="38.0" prefWidth="55.0" text="10" />
+                                       </children>
+                                    </Pane>
+                                    <VBox fx:id="plusBet" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#plusBet" onMouseEntered="#mouseHover" prefHeight="50.0" prefWidth="40.0" styleClass="selectionPane">
+                                       <children>
+                                          <Label alignment="CENTER" prefHeight="27.0" prefWidth="43.0" text="⮞">
+                                             <font>
+                                                <Font size="54.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <effect>
+                                                <InnerShadow />
+                                             </effect>
+                                          </Label>
+                                       </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="76.0" prefWidth="285.0">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="37.0" prefWidth="285.0">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="lblPane">
+                                       <children>
+                                          <Label prefHeight="38.0" prefWidth="68.0" text="FILAS" wrapText="true">
+                                             <font>
+                                                <Font name="Britannic Bold" size="27.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </HBox>
+                              <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="51.0" prefWidth="280.0" spacing="5.0">
+                                 <children>
+                                    <VBox fx:id="minusRow" alignment="CENTER" minWidth="-Infinity" onMouseClicked="#minusBet" onMouseEntered="#mouseHover" prefHeight="44.0" prefWidth="37.0" styleClass="selectionPane">
+                                       <children>
+                                          <Label alignment="CENTER" prefHeight="38.0" prefWidth="52.0" text="⮜">
+                                             <font>
+                                                <Font size="54.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <effect>
+                                                <InnerShadow />
+                                             </effect>
+                                          </Label>
+                                       </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </VBox>
+                                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.85" prefHeight="49.0" prefWidth="200.0" styleClass="showlblPane">
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                       <children>
+                                          <Label fx:id="rowsLabel" alignment="CENTER" layoutX="75.0" layoutY="6.0" prefHeight="38.0" prefWidth="55.0" text="8" wrapText="true" />
+                                       </children>
+                                    </Pane>
+                                    <VBox fx:id="plusRow" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#plusBet" onMouseEntered="#mouseHover" prefHeight="50.0" prefWidth="40.0" styleClass="selectionPane">
+                                       <children>
+                                          <Label alignment="CENTER" prefHeight="27.0" prefWidth="43.0" text="⮞">
+                                             <font>
+                                                <Font size="54.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <effect>
+                                                <InnerShadow />
+                                             </effect>
+                                          </Label>
+                                       </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="76.0" prefWidth="285.0">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="37.0" prefWidth="285.0">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="lblPane">
+                                       <children>
+                                          <Label prefHeight="38.0" prefWidth="148.0" text="COLUMNAS">
+                                             <font>
+                                                <Font name="Britannic Bold" size="27.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </HBox>
+                              <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="51.0" prefWidth="280.0" spacing="5.0">
+                                 <children>
+                                    <VBox fx:id="minusColum" alignment="CENTER" minWidth="-Infinity" onMouseClicked="#minusBet" onMouseEntered="#mouseHover" prefHeight="44.0" prefWidth="37.0" styleClass="selectionPane">
+                                       <children>
+                                          <Label alignment="CENTER" prefHeight="38.0" prefWidth="52.0" text="⮜">
+                                             <font>
+                                                <Font size="54.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <effect>
+                                                <InnerShadow />
+                                             </effect>
+                                          </Label>
+                                       </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </VBox>
+                                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.85" prefHeight="49.0" prefWidth="200.0" styleClass="showlblPane">
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                       <children>
+                                          <Label fx:id="columnsLabel" alignment="CENTER" layoutX="75.0" layoutY="6.0" prefHeight="38.0" prefWidth="55.0" text="8" />
+                                       </children>
+                                    </Pane>
+                                    <VBox fx:id="plusColumn" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#plusBet" onMouseEntered="#mouseHover" prefHeight="50.0" prefWidth="40.0" styleClass="selectionPane">
+                                       <children>
+                                          <Label alignment="CENTER" prefHeight="27.0" prefWidth="43.0" text="⮞">
+                                             <font>
+                                                <Font size="54.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <effect>
+                                                <InnerShadow />
+                                             </effect>
+                                          </Label>
+                                       </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                           <VBox.margin>
+                              <Insets bottom="40.0" />
+                           </VBox.margin>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

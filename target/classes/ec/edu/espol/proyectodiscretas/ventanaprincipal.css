@@ -1,0 +1,124 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2 feb. 2022, 15:30:28
+    Author     : rsgar
+*/
+
+#BackgroundPane {
+    -fx-background-image: url('img/BG-principal.png');
+    -fx-background-size: 100% 100%;
+    -fx-background-color:transparent;
+    -fx-font-size:30;
+}
+
+.pane{
+    -fx-background-color:transparent;
+    -fx-opacity: 1;
+    -fx-font-size:30;
+    
+}
+
+.button{
+    /*-fx-background-color:linear-gradient(#dc9656,#ab4642);*/
+    -fx-background-color:#2196f3;
+    -fx-text-fill:#dcdcdc;
+    -fx-background-radius: 6em;
+}
+
+.button .text {
+    -fx-font-family: "BungeeShade";
+    -fx-font-size: 26;
+}
+
+.button:hover{
+    -fx-background-color:#5db6ff;
+}
+
+.button:pressed{
+    -fx-background-color:#104f7c;
+}
+
+.tf_box{
+    -fx-background-color:transparent;
+    -fx-border-color:#ffffff;
+    -fx-border-width: 0px 0px 1px 0px;
+    -fx-text-fill: #ffffff;
+}
+
+.tf{
+    -fx-background-color:transparent;
+}
+
+.btnAudio{
+    -fx-background-color:transparent;
+    -fx-text-fill:#dcdcdc;
+    -fx-background-radius: 6em;
+}
+
+.btnAudio:hover{
+    -fx-background-color:transparent;
+}
+
+.btnAudio:pressed{
+    -fx-background-color:transparent;
+}
+
+.label{
+   -fx-font-size: 26;
+   -fx-text-fill: black;
+   -fx-font-weight: bold;
+}
+
+.lblPane{
+    -fx-background-color: #ffffff;
+}
+
+.showlblPane{
+    -fx-background-color: gray;
+    -fx-background-radius: 0.4em;
+}
+
+.selectionPane{
+    -fx-background-color: darkgray;
+    -fx-background-radius: 1em;
+    -fx-font-size:54;
+    -fx-opacity: 0.80;
+}
+
+.selectionPane:hover{
+    -fx-background-color: darkgray;
+    -fx-font-size:54;
+    -fx-opacity: 1;
+}
+
+.selectionPane:pressed{
+    -fx-background-color: darkgray;
+    -fx-font-size:54;
+    -fx-opacity: 0.55;
+}
+
+#OptionsPane{
+    -fx-background-color: lightgrey;
+    -fx-background-radius: 1em;
+}
+
+.btn{
+    -fx-opacity: 0.80;
+}
+
+.btn:hover{
+    -fx-opacity: 1;
+}
+
+btn:pressed{
+    -fx-opacity: 0.55;
+}
+
+.bgpane{
+    -fx-background-color: #696969;
+    -fx-background-radius: 0.5em;
+}

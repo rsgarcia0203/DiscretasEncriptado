@@ -1,0 +1,75 @@
+#BackgroundPane{
+    -fx-background-image: url('img/BG-game.png');
+    -fx-background-size: 100% 100%;
+}
+
+#vida{
+    -fx-background-image: url('img/heart.png');
+    -fx-background-size: 100% 100%;
+}
+
+.buttonAdd{
+    -fx-background-color:#2EDE11;
+    -fx-background-radius: 2em;
+    -fx-opacity: 0.80;
+}
+
+.buttonAdd:hover{
+    -fx-background-color:#2EDE11;
+    -fx-background-radius: 2em;
+    -fx-opacity: 1;
+}
+
+.buttonAdd:pressed{
+    -fx-background-color:#2EDE11;
+    -fx-background-radius: 2em;
+    -fx-opacity: 0.55;
+}
+
+.buttonDel{
+    -fx-background-color:#DE1111;
+    -fx-background-radius: 2em;
+    -fx-opacity: 0.80;
+}
+
+.buttonDel:hover{
+    -fx-background-color:#DE1111;
+    -fx-background-radius: 2em;
+    -fx-opacity: 1;
+}
+
+.buttonDel:pressed{
+    -fx-background-color:#DE1111;
+    -fx-background-radius: 2em;
+    -fx-opacity: 0.55;    
+}
+
+.btn{
+    -fx-opacity: 0.80;    
+}
+
+.btn:hover{
+    -fx-opacity: 1;    
+}
+
+.btn:pressed{
+    -fx-opacity: 0.55;    
+}
+
+.buttonSend{
+    -fx-background-color:#00DDFF;
+    -fx-background-radius: 2em;
+    -fx-opacity: 0.80;
+}
+
+.buttonSend:hover{
+    -fx-background-color:#00DDFF;
+    -fx-background-radius: 2em;
+    -fx-opacity: 1;
+}
+
+.buttonSend:pressed{
+    -fx-background-color:#00DDFF;
+    -fx-background-radius: 2em;
+    -fx-opacity: 0.55;    
+}

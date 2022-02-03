@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="BackgroundPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@ventanainfo.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.controller.VentanaInfoController">
+   <children>
+      <BorderPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0">
+         <center>
+            <Pane prefHeight="316.0" prefWidth="1280.0" styleClass="pane" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="540.0" fitWidth="739.0" layoutX="272.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/logo.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="btnBack" fitHeight="87.0" fitWidth="91.0" layoutX="14.0" layoutY="677.0" onMouseClicked="#toMain" onMouseEntered="#mouseHover" pickOnBounds="true" preserveRatio="true" styleClass="btn">
+                     <image>
+                        <Image url="@img/return.png" />
+                     </image>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" layoutX="50.0" layoutY="185.0" prefHeight="472.0" prefWidth="1161.0" styleClass="ScrollPane">
+                     <content>
+                        <Pane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="900.0" prefWidth="1160.0">
+                           <children>
+                              <Pane opacity="0.6" prefHeight="900.0" prefWidth="1160.0" styleClass="bgPane" />
+                              <VBox alignment="CENTER" prefHeight="900.0" prefWidth="1160.0" spacing="10.0" style="-fx-opacity: 1;" styleClass="cont">
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="225.0" prefWidth="1000.0" text="El juego “Crypto-Game” consiste en una sopa de letras que tiene la capacidad de desplazar sus filas y columnas, las cuales se podrá modificar un máximo de 2 veces en total. Además, el juego también cuenta con un cronómetro que arranca en el momento que se visualiza la sopa de letras. Y, en caso  de cometer la suficiente cantidad de errores, perderá la partida." textAlignment="JUSTIFY" textFill="WHITE" wrapText="true" />
+                                    <Label alignment="CENTER" prefHeight="208.0" prefWidth="996.0" text="El método de encriptación que se utiliza en el juego es el desplazamiento de César, este es un tipo de cifrado por sustitución en el que las letras originales de una cadena de caracteres son reemplazadas por otras que se encuentren a un número k de posiciones por delante de la original en el alfabeto." textAlignment="JUSTIFY" wrapText="true" />
+                                    <Label prefHeight="13.0" prefWidth="1009.0" text="Juego diseñado para la materia de Matematicas Discretas." textAlignment="JUSTIFY" />
+                                    <Label prefHeight="38.0" prefWidth="1004.0" text="Integrantes:" />
+                                    <Label text="Ronny García" />
+                                    <Label text="Nelson Abad" />
+                                    <Label text="Juan Guadalupe" />
+                                    <Label text="Meiying Chang" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </Pane>
+                     </content>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </ScrollPane>
+               </children>
+            </Pane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
