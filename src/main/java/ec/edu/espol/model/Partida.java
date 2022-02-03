@@ -147,8 +147,22 @@ public abstract class Partida {
         String palabra; 
         do{
             palabra = validas.get(i);
-        } while (palabra.length() > sopa.getN_columnas() && palabra.length() > sopa.getN_filas());
+        } while (palabra.length() > sopa.getN_columnas() && palabra.length() > sopa.getN_filas() && verifyLettersOnWindow(palabra) == false);
         System.out.println(palabra);
         return CesarEncrypt.encodeWord(palabra);
+    }
+    
+    public static boolean verifyLettersOnWindow(String word){
+        for(int i = 0; i < sopa.getSopa().size(); i++){
+            for(int j = 0; j < sopa.getSopa().get(i).size(); j++){
+                for(Character c: word.toCharArray()){
+                    if(!sopa.getSopa().get(i).contains(c)){
+                        return false;
+                    }
+                }       
+            } 
+        }
+        
+        return true;
     }
 }

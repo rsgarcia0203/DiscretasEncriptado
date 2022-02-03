@@ -212,7 +212,7 @@
                   </ImageView>
                </children>
                <HBox.margin>
-                  <Insets right="236.0" />
+                  <Insets right="237.0" />
                </HBox.margin></Pane>
             <VBox alignment="CENTER" prefHeight="107.0" prefWidth="600.0">
                <children>

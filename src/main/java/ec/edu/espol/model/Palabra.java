@@ -57,7 +57,7 @@ public class Palabra {
             return Intento.YA_ENCONTRADA;
         } else if (Partida.validas.contains(palabra) || Partida.encontradas_string.contains(palabra)) {
 
-            if (CesarEncrypt.decodeWord(palabra).equals(palabraEncriptada)) {
+            if (CesarEncrypt.encodeWord(palabra).equals(palabraEncriptada)) {
                 jugador.agregarPalabra(palabra);
                 Partida.agregarPalabra(this, palabra);
                 Partida.actualizarPalabrasValidas();

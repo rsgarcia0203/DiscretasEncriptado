@@ -652,6 +652,7 @@ public class VentanaJuegoController implements Initializable {
                 Sounds.success();
                 casoPorTurno(getTurno(), false);
                 refrescarSopa();
+                encriptWord.setText(Partida.decodeAleatoryWord());
                 break;
         }
         if (Partida.jugadorDos != null) {
