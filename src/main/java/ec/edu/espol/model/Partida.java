@@ -1,5 +1,6 @@
 package ec.edu.espol.model;
 
+import ec.edu.espol.security.CesarEncrypt;
 import ec.edu.espol.util.ArrayList;
 import ec.edu.espol.util.CircularDoublyLinkedList;
 import ec.edu.espol.util.DoublyLinkedList;
@@ -18,6 +19,8 @@ public abstract class Partida {
     public static DoublyLinkedList<Palabra> encontradas = new DoublyLinkedList();
     public static DoublyLinkedList<String> encontradas_string = new DoublyLinkedList();
     public static ArrayList<String> validas;
+    public static Map<Character, Character> encodeChars = new HashMap<>();
+    public static Map<Character, Character> decodeChars = new HashMap<>();
     public static int apuesta;
     public static boolean xtreme;
 
@@ -40,6 +43,9 @@ public abstract class Partida {
     };
 
     public static void nuevaPartidaUnJugador(int n_filas, int n_columnas, int bet, boolean xtreme_mode) {
+        CesarEncrypt.getEncodeChars();
+        encodeChars = CesarEncrypt.encodeChars;
+        decodeChars = CesarEncrypt.decodeChars;
         encontradas.clear();
         encontradas_string.clear();
         jugadorUno = new Jugador();
@@ -64,7 +70,7 @@ public abstract class Partida {
         encontradas.addLast(palabra);
         encontradas_string.addLast(s_palabra);
     }
-
+    
     /**
      * Este método actualiza la lista de palabras que es posible encontrar
      * dentro la sopa, tomando en cuenta los movimientos que puede hacer el
@@ -134,5 +140,11 @@ public abstract class Partida {
 
         } catch (Exception e) {
         }
+    }
+    
+    public String decodeAleatoryWord(){
+        int i = (int) (Math.random() * validas.size());
+        String palabra = validas.get(i);
+        return CesarEncrypt.decodeWord(palabra);
     }
 }

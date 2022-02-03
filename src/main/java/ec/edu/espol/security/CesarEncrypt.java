@@ -17,13 +17,16 @@ import java.util.Map;
 public abstract class CesarEncrypt {
 
     private static final String CHARS = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
-    private final static char[] charsArray = (CHARS + CHARS).toCharArray();
-    private final static Map<Character, Character> encodeChars = new HashMap<>();
-    private final static Map<Character, Character> decodeChars = new HashMap<>();
+    private static final char[] charsArray = (CHARS + CHARS).toCharArray();
+    public static Map<Character, Character> encodeChars = new HashMap<>();
+    public static Map<Character, Character> decodeChars = new HashMap<>();
 
     // primero obtenemos las claves de nuestro abecedario con la cantidad n de desplazamientos
-    public void getEncodeChars(int displacement) throws IndexOutOfBoundsException {
-
+    public static void getEncodeChars() {
+        
+        // La cantidad de desplazamientos será aleatoria
+        int displacement = (int) (Math.random() * CHARS.length());
+        
         if (displacement >= CHARS.length()) {
             throw new IndexOutOfBoundsException("");
         } else {
@@ -45,6 +48,17 @@ public abstract class CesarEncrypt {
         
         return encodeword.toString();
     }
+    
+    public static String encodeWord(String word) {
+        StringBuilder encodeword = new StringBuilder();
+        
+        for (char letra : word.toCharArray()) {
+            String encodeLetter = encodeChars.get(letra).toString();
+            encodeword.append(encodeLetter);
+        }
+        
+        return encodeword.toString();
+    }
 
     public static String decodeWord(ArrayList<Letra> letters) {
         StringBuilder decodeword = new StringBuilder();
@@ -56,5 +70,18 @@ public abstract class CesarEncrypt {
         
         return decodeword.toString();
     }
+    
+    public static String decodeWord(String word) {
+        StringBuilder decodeword = new StringBuilder();
+        
+        for (char letra : word.toCharArray()) {
+            String encodeLetter = decodeChars.get(letra).toString();
+            decodeword.append(encodeLetter);
+        }
+        
+        return decodeword.toString();
+    }
+    
+    
 
 }
